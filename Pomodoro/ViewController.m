@@ -10,6 +10,29 @@
 
 @implementation ViewController
 
+-(IBAction)Start:(id)sender{
+    PomodoroTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(TimerStart) userInfo:nil repeats:YES];
+}
+
+-(void)TimerStart{
+    
+    Counter = Counter - 1;
+    Display.stringValue = [NSString stringWithFormat:@"%i", Counter];
+}
+
+-(IBAction)Stop:(id)sender{
+    
+    [PomodoroTimer invalidate];
+    
+}
+
+-(IBAction)Restart:(id)sender{
+    
+    Counter = 25;
+    Display.stringValue = [NSString stringWithFormat:@"%i", Counter];
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 

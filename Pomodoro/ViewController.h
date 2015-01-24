@@ -7,9 +7,21 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <AppKit/AppKit.h>
 
-@interface ViewController : NSViewController
 
+int Counter = 25;
+
+@interface ViewController : NSViewController{
+    IBOutlet NSTextField *Display;
+    NSTimer *PomodoroTimer;
+    
+}
+
+-(void)TimerStart;
+-(IBAction)Start:(id)sender;
+-(IBAction)Stop:(id)sender;
+-(IBAction)Restart:(id)sender;
 
 @end
 
