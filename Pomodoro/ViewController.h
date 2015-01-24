@@ -10,7 +10,7 @@
 #import <AppKit/AppKit.h>
 
 
-int Counter = 25;
+int TotalTime = 1500;
 
 @interface ViewController : NSViewController{
     IBOutlet NSTextField *Display;

@@ -16,8 +16,11 @@
 
 -(void)TimerStart{
     
-    Counter = Counter - 1;
-    Display.stringValue = [NSString stringWithFormat:@"%i", Counter];
+    TotalTime = TotalTime - 1;
+    int minutes = TotalTime/60;
+    int seconds = TotalTime - (minutes * 60);
+    
+    Display.stringValue = [NSString stringWithFormat:@"%2d:%2d", minutes,seconds];
 }
 
 -(IBAction)Stop:(id)sender{
@@ -28,8 +31,8 @@
 
 -(IBAction)Restart:(id)sender{
     
-    Counter = 25;
-    Display.stringValue = [NSString stringWithFormat:@"%i", Counter];
+    TotalTime = 1500;
+    Display.stringValue = @"25:00";
     
 }
 
