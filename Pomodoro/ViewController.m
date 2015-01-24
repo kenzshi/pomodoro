@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+@import Foundation;
 
 @implementation ViewController
 
@@ -20,7 +21,21 @@
     int minutes = TotalTime/60;
     int seconds = TotalTime - (minutes * 60);
     
-    Display.stringValue = [NSString stringWithFormat:@"%2d:%2d", minutes,seconds];
+    Display.stringValue = [NSString stringWithFormat:@"%.2d:%.2d", minutes,seconds];
+    
+    //When we get to 0, system notification
+    if (TotalTime == 0) {
+        [PomodoroTimer invalidate];
+        PomodoroTimer = nil;
+        
+        //Send notification
+        NSUserNotification *notification = [[NSUserNotification alloc] init];
+        [notification setTitle:@"Pomodoro Timer"];
+        [notification setInformativeText:@"You've finished your session!"];
+        [notification setSoundName:NSUserNotificationDefaultSoundName];
+        
+        [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+    }
 }
 
 -(IBAction)Stop:(id)sender{
