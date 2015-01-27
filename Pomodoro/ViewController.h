@@ -12,8 +12,9 @@
 
 int TotalTime;
 bool OnBreak = false;
-int SessionLength = 1500; // Default 25 min session
-int BreakLength = 300; // Default 5 min break 
+bool IsPaused = false;
+int SessionLength = 10; // Default 25 min session (1500)
+int BreakLength = 3; // Default 5 min break (300)
 
 @interface ViewController : NSViewController{
     IBOutlet NSTextField *Display;
@@ -23,7 +24,7 @@ int BreakLength = 300; // Default 5 min break
 
 -(void)TimerStart;
 -(IBAction)Start:(id)sender;
--(IBAction)Stop:(id)sender;
+-(IBAction)Pause:(id)sender;
 -(IBAction)Restart:(id)sender;
 
 @end

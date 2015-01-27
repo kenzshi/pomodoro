@@ -13,16 +13,17 @@
 
 -(IBAction)Start:(id)sender{
     if(OnBreak){
-        TotalTime = BreakLength;
+        [sender setTitle:@"New Session!"];
+    } else{
+        [sender setTitle:@"Start Break!"];
     }
-    else
-        TotalTime = SessionLength;
     
-    PomodoroTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(TimerStart) userInfo:nil repeats:YES];
+    if(PomodoroTimer == nil)
+        PomodoroTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(TimerStart) userInfo:nil repeats:YES];
 }
 
 -(void)TimerStart{
-    
+    if (!IsPaused){
     NSSound *systemSound = [NSSound soundNamed:@"Pop"];
     [systemSound play];
 
@@ -30,10 +31,15 @@
     int minutes = TotalTime/60;
     int seconds = TotalTime - (minutes * 60);
     
+    if(OnBreak)
+        [Display setTextColor:[NSColor greenColor]];
+    else
+        [Display setTextColor:[NSColor redColor]];
     Display.stringValue = [NSString stringWithFormat:@"%.2d:%.2d", minutes,seconds];
     
     //When we get to 0, system notification
     if (TotalTime == 0) {
+        
         [PomodoroTimer invalidate];
         PomodoroTimer = nil;
         
@@ -46,8 +52,8 @@
             [notification setInformativeText:@"Your break is over, get back to work!"];
             [notification setSoundName:NSUserNotificationDefaultSoundName];
             [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
-            PomodoroTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(TimerStart) userInfo:nil repeats:YES];
-        }
+            //PomodoroTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(TimerStart) userInfo:nil repeats:YES];
+            }
         else{
             OnBreak = true;
             TotalTime = BreakLength;
@@ -57,22 +63,23 @@
             [notification setInformativeText:@"You've finished your session, your break starts now!"];
             [notification setSoundName:NSUserNotificationDefaultSoundName];
             [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
-            PomodoroTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(TimerStart) userInfo:nil repeats:YES];
+            //PomodoroTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(TimerStart) userInfo:nil repeats:YES];
+            }
         }
-        
-
     }
 }
 
--(IBAction)Stop:(id)sender{
+-(IBAction)Pause:(id)sender{
     
-    if(OnBreak){
-        TotalTime = BreakLength;
-        [PomodoroTimer invalidate];
-    } else {
-        TotalTime = SessionLength;
-        [PomodoroTimer invalidate];
+    if(IsPaused){
+        IsPaused = false;
+        [sender setTitle:@"Pause"];
     }
+    else{
+        IsPaused = true;
+        [sender setTitle:@"Resume"];
+    }
+    
     
 }
 
@@ -92,6 +99,13 @@
     [super viewDidLoad];
 
     // Do any additional setup after loading the view.
+    
+    if(OnBreak){
+        TotalTime = BreakLength;
+    }
+    else
+        TotalTime = SessionLength;
+    
 }
 
 - (void)setRepresentedObject:(id)representedObject {
