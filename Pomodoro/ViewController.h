@@ -11,6 +11,7 @@
 
 
 int TotalTime;
+int TickSound = 0; // Variable to keep track of tick sounds when starting new session
 bool OnBreak = false;
 bool IsPaused = false;
 int SessionLength = 10; // Default 25 min session (1500)

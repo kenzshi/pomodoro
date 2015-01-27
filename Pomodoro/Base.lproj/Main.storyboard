@@ -674,18 +674,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="211"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nUb-98-4SK">
-                                <rect key="frame" x="65" y="21" width="116" height="32"/>
-                                <buttonCell key="cell" type="push" title="Start" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PBd-y2-fla">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="Start:" target="XfG-lQ-9wD" id="hhH-fI-xZv"/>
-                                </connections>
-                            </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bQx-jC-kzZ">
-                                <rect key="frame" x="181" y="21" width="116" height="32"/>
+                                <rect key="frame" x="182" y="21" width="116" height="32"/>
                                 <buttonCell key="cell" type="push" title="Pause" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="GWE-sb-qLl">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -695,7 +685,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ale-V5-p4b">
-                                <rect key="frame" x="300" y="21" width="116" height="32"/>
+                                <rect key="frame" x="298" y="21" width="116" height="32"/>
                                 <buttonCell key="cell" type="push" title="Restart" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="tqf-pb-ZE2">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -704,14 +694,24 @@
                                     <action selector="Restart:" target="XfG-lQ-9wD" id="HSN-Az-Ise"/>
                                 </connections>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LGK-DP-mWa">
+                            <textField autoresizesSubviews="NO" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LGK-DP-mWa">
                                 <rect key="frame" x="-2" y="76" width="484" height="135"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="25:00" id="IgC-ND-VsY">
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="25:00" id="IgC-ND-VsY">
                                     <font key="font" size="136" name="SofiaProLight"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nUb-98-4SK">
+                                <rect key="frame" x="54" y="21" width="128" height="32"/>
+                                <buttonCell key="cell" type="push" title="Start" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PBd-y2-fla">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="Start:" target="XfG-lQ-9wD" id="hUh-iA-JXL"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <connections>
