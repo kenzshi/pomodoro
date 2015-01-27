@@ -10,7 +10,10 @@
 #import <AppKit/AppKit.h>
 
 
-int TotalTime = 1500;
+int TotalTime;
+bool OnBreak = false;
+int SessionLength = 1500; // Default 25 min session
+int BreakLength = 300; // Default 5 min break 
 
 @interface ViewController : NSViewController{
     IBOutlet NSTextField *Display;

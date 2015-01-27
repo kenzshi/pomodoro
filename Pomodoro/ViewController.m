@@ -12,11 +12,20 @@
 @implementation ViewController
 
 -(IBAction)Start:(id)sender{
+    if(OnBreak){
+        TotalTime = BreakLength;
+    }
+    else
+        TotalTime = SessionLength;
+    
     PomodoroTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(TimerStart) userInfo:nil repeats:YES];
 }
 
 -(void)TimerStart{
     
+    NSSound *systemSound = [NSSound soundNamed:@"Pop"];
+    [systemSound play];
+
     TotalTime = TotalTime - 1;
     int minutes = TotalTime/60;
     int seconds = TotalTime - (minutes * 60);
@@ -28,26 +37,54 @@
         [PomodoroTimer invalidate];
         PomodoroTimer = nil;
         
-        //Send notification
-        NSUserNotification *notification = [[NSUserNotification alloc] init];
-        [notification setTitle:@"Pomodoro Timer"];
-        [notification setInformativeText:@"You've finished your session!"];
-        [notification setSoundName:NSUserNotificationDefaultSoundName];
+        if(OnBreak){
+            OnBreak = false;
+            TotalTime = SessionLength;
+            //Send notification finished with break
+            NSUserNotification *notification = [[NSUserNotification alloc] init];
+            [notification setTitle:@"Break's Over!"];
+            [notification setInformativeText:@"Your break is over, get back to work!"];
+            [notification setSoundName:NSUserNotificationDefaultSoundName];
+            [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+            PomodoroTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(TimerStart) userInfo:nil repeats:YES];
+        }
+        else{
+            OnBreak = true;
+            TotalTime = BreakLength;
+            //Send notification finished with Pomodoro session
+            NSUserNotification *notification = [[NSUserNotification alloc] init];
+            [notification setTitle:@"Finished Session!"];
+            [notification setInformativeText:@"You've finished your session, your break starts now!"];
+            [notification setSoundName:NSUserNotificationDefaultSoundName];
+            [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+            PomodoroTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(TimerStart) userInfo:nil repeats:YES];
+        }
         
-        [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+
     }
 }
 
 -(IBAction)Stop:(id)sender{
     
-    [PomodoroTimer invalidate];
+    if(OnBreak){
+        TotalTime = BreakLength;
+        [PomodoroTimer invalidate];
+    } else {
+        TotalTime = SessionLength;
+        [PomodoroTimer invalidate];
+    }
     
 }
 
 -(IBAction)Restart:(id)sender{
     
-    TotalTime = 1500;
-    Display.stringValue = @"25:00";
+    if(OnBreak){
+        TotalTime = BreakLength;
+        Display.stringValue = @"5:00";
+    } else {
+        TotalTime = SessionLength;
+        Display.stringValue = @"25:00";
+    }
     
 }
 
