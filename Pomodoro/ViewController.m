@@ -19,7 +19,6 @@
     }
     
     if(PomodoroTimer == nil)
-        //[sender setTitle:@"Pause"];
         PomodoroTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(TimerStart) userInfo:nil repeats:YES];
 
 }
@@ -84,16 +83,14 @@
 }
 
 -(IBAction)Pause:(id)sender{
-    
+    //Pauses and resumes
     if(IsPaused){
         TickSound = 0;
         IsPaused = false;
-        [sender setTitle:@"Pause"];
     }
     else{
         TickSound = 0;
         IsPaused = true;
-        [sender setTitle:@"Resume"];
     }
     
     
