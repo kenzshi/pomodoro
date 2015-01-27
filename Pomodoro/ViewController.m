@@ -20,12 +20,14 @@
 
     
     
-    if(PomodoroTimer == nil)
+    if(PomodoroTimer == nil){
         PomodoroTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(TimerStart) userInfo:nil repeats:YES];
+    }
 
 }
 
 -(void)TimerStart{
+    
     [Indicator setDoubleValue:SessionNum];
 
     if (!IsPaused){
@@ -42,7 +44,7 @@
         int seconds = TotalTime - (minutes * 60);
     
         
-        //Set text color depending on break/session
+        //Set text color depending on break/session, using Crayola colors
         if(OnBreak)
             [Display setTextColor:[NSColor colorWithRed:0.518 green:0.871 blue:0.008 alpha:1.0]]; // Alien Armpit
         else if(TotalTime <= SessionLength*1/5)
@@ -56,7 +58,12 @@
         else if(TotalTime <= SessionLength)
             [Display setTextColor:[NSColor colorWithRed:0.518 green:0.871 blue:0.008 alpha:1.0]]; // Alien Armpit
         
+        
+        
+        //Print time to screen
         Display.stringValue = [NSString stringWithFormat:@"%.2d:%.2d", minutes,seconds];
+        
+        
     
         //When we get to 0:00, system notification
         if (TotalTime == 0) {
@@ -69,6 +76,9 @@
         
             //Notify and reinitialize depending on session or break
             if(OnBreak){
+                //Increase number of pomodoro sessions
+                SessionNum++;
+                
                 OnBreak = false;
                 TotalTime = SessionLength;
                 //Send notification finished with break
@@ -80,9 +90,6 @@
 
             }
             else{
-                //Increase number of pomodoro sessions
-                SessionNum++;
-                
                 OnBreak = true;
                 TotalTime = BreakLength;
                 //Send notification finished with Pomodoro session
