@@ -12,13 +12,15 @@
 
 int TotalTime;
 int TickSound = 0; // Variable to keep track of tick sounds when starting new session
+double SessionNum = 0;
 bool OnBreak = false;
 bool IsPaused = false;
-int SessionLength = 1500; // Default 25 min session (1500)
-int BreakLength = 300; // Default 5 min break (300)
+int SessionLength = 15; // Default 25 min session (1500)
+int BreakLength = 3; // Default 5 min break (300)
 
 @interface ViewController : NSViewController{
     IBOutlet NSTextField *Display;
+    IBOutlet NSLevelIndicator *Indicator; //Keeps track of number of pomodoro sessions
     NSTimer *PomodoroTimer;
     
 }

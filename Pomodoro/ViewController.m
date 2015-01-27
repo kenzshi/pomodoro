@@ -17,6 +17,8 @@
     } else{
         [sender setTitle:@"Start Break!"];
     }
+
+    
     
     if(PomodoroTimer == nil)
         PomodoroTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(TimerStart) userInfo:nil repeats:YES];
@@ -24,6 +26,8 @@
 }
 
 -(void)TimerStart{
+    [Indicator setDoubleValue:SessionNum];
+
     if (!IsPaused){
     
         //First 5 seconds will have sound
@@ -40,9 +44,17 @@
         
         //Set text color depending on break/session
         if(OnBreak)
-            [Display setTextColor:[NSColor colorWithRed:0.518 green:0.871 blue:0.008 alpha:1.0]];
-        else
-            [Display setTextColor:[NSColor colorWithRed:0.855 green:0.149 blue:0.278 alpha:1.0]];
+            [Display setTextColor:[NSColor colorWithRed:0.518 green:0.871 blue:0.008 alpha:1.0]]; // Alien Armpit
+        else if(TotalTime <= SessionLength*1/5)
+            [Display setTextColor:[NSColor colorWithRed:1.000 green:0.220 blue:0.333 alpha:1.0]]; // Sizzling Red
+        else if(TotalTime <= SessionLength*2/5)
+            [Display setTextColor:[NSColor colorWithRed:0.980 green:0.357 blue:0.239 alpha:1.0]]; // Orange Soda
+        else if(TotalTime <= SessionLength*3/5)
+            [Display setTextColor:[NSColor colorWithRed:1.000 green:0.667 blue:0.114 alpha:1.0]]; // Bright Yellow
+        else if(TotalTime <= SessionLength*4/5)
+            [Display setTextColor:[NSColor colorWithRed:1.000 green:0.859 blue:0.000 alpha:1.0]]; // Sizzling Sunrise
+        else if(TotalTime <= SessionLength)
+            [Display setTextColor:[NSColor colorWithRed:0.518 green:0.871 blue:0.008 alpha:1.0]]; // Alien Armpit
         
         Display.stringValue = [NSString stringWithFormat:@"%.2d:%.2d", minutes,seconds];
     
@@ -68,6 +80,9 @@
 
             }
             else{
+                //Increase number of pomodoro sessions
+                SessionNum++;
+                
                 OnBreak = true;
                 TotalTime = BreakLength;
                 //Send notification finished with Pomodoro session

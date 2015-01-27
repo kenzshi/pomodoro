@@ -653,10 +653,10 @@
                     <window key="window" title="Pomodoro Timer" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="231" y="240" width="480" height="211"/>
+                        <rect key="contentRect" x="231" y="240" width="480" height="240"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
-                        <value key="minSize" type="size" width="480" height="211"/>
-                        <value key="maxSize" type="size" width="480" height="211"/>
+                        <value key="minSize" type="size" width="480" height="240"/>
+                        <value key="maxSize" type="size" width="480" height="240"/>
                     </window>
                     <connections>
                         <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
@@ -671,11 +671,11 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="211"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="244"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bQx-jC-kzZ">
-                                <rect key="frame" x="182" y="21" width="116" height="32"/>
+                                <rect key="frame" x="182" y="9" width="116" height="32"/>
                                 <buttonCell key="cell" type="push" title="Pause" alternateTitle="Resume" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="GWE-sb-qLl">
                                     <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -685,7 +685,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ale-V5-p4b">
-                                <rect key="frame" x="298" y="21" width="116" height="32"/>
+                                <rect key="frame" x="298" y="9" width="116" height="32"/>
                                 <buttonCell key="cell" type="push" title="Restart" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="tqf-pb-ZE2">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -695,15 +695,15 @@
                                 </connections>
                             </button>
                             <textField autoresizesSubviews="NO" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LGK-DP-mWa">
-                                <rect key="frame" x="-2" y="76" width="484" height="135"/>
+                                <rect key="frame" x="-2" y="109" width="484" height="135"/>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="25:00" id="IgC-ND-VsY">
                                     <font key="font" size="136" name="SofiaProLight"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nUb-98-4SK">
-                                <rect key="frame" x="54" y="21" width="128" height="32"/>
+                                <rect key="frame" x="54" y="9" width="128" height="32"/>
                                 <buttonCell key="cell" type="push" title="Start" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PBd-y2-fla">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -712,15 +712,20 @@
                                     <action selector="Start:" target="XfG-lQ-9wD" id="hUh-iA-JXL"/>
                                 </connections>
                             </button>
+                            <levelIndicator verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sSP-Ig-Prs">
+                                <rect key="frame" x="60" y="60" width="348" height="18"/>
+                                <levelIndicatorCell key="cell" alignment="left" maxValue="10" warningValue="1" id="0gD-oO-hO1"/>
+                            </levelIndicator>
                         </subviews>
                     </view>
                     <connections>
                         <outlet property="Display" destination="LGK-DP-mWa" id="QeW-wV-RSP"/>
+                        <outlet property="Indicator" destination="sSP-Ig-Prs" id="MGn-VB-tE0"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="92" y="671.5"/>
+            <point key="canvasLocation" x="92" y="688"/>
         </scene>
     </scenes>
 </document>
