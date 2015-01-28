@@ -15,8 +15,8 @@ int TickSound = 0; // Variable to keep track of tick sounds when starting new se
 double SessionNum = 1;
 bool OnBreak = false;
 bool IsPaused = false;
-int SessionLength = 15; // Default 25 min session (1500)
-int BreakLength = 3; // Default 5 min break (300)
+int SessionLength = 1500; // Default 25 min session (1500)
+int BreakLength = 300; // Default 5 min break (300)
 
 @interface ViewController : NSViewController{
     IBOutlet NSTextField *Display;

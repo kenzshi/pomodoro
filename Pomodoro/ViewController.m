@@ -76,8 +76,6 @@
         
             //Notify and reinitialize depending on session or break
             if(OnBreak){
-                //Increase number of pomodoro sessions
-                SessionNum++;
                 
                 OnBreak = false;
                 TotalTime = SessionLength;
