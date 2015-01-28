@@ -2,7 +2,7 @@
 
 Simple Pomodoro countdown timer for learning basic Obj-C and OSX dev.
 
-$How it works:
+#How it works:
 - Read about the Pomodoro Technique here: http://en.wikipedia.org/wiki/Pomodoro_Technique
 - Use the Pomodoro app to set up 25 minutes of work with a 5 minute break between sessions
 
