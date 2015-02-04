@@ -11,4 +11,10 @@ Simple Pomodoro countdown timer for learning basic Obj-C and OSX dev.
 - OS X Notification when your session/break is over
 - Keep track of the number of sessions you have completed
 - Color coded timer to keep track of how much time you have left
+
+
+#Upcoming Features:
+- Save session information
+- Session graph tracking
+- Tabs for other utilities
  
